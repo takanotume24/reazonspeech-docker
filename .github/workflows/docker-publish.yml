@@ -22,7 +22,7 @@ jobs:
       - name: Read version from file
         id: read_version
         run: |
-          echo "REAZONSPEECH_VERSION=$(cat REAZONSPEECH_VERSION)" >> "$GITHUB_ENV"
+          echo "REAZONSPEECH_VERSION=$(cat reazonspeech_version)" >> "$GITHUB_ENV"
 
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
