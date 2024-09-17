@@ -35,10 +35,14 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           tags: |
             ghcr.io/${{ github.repository }}:latest
             ghcr.io/${{ github.repository }}:2.1.0
           build-args: |
             REAZONSPEECH_VERSION=2.1.0
-          push: true
+          push: false
+
+      - name: Run tests in Docker container
+        run: |
+          docker run --rm reazonspeech:latest /bin/bash -c "reazonspeech-nemo-asr --help"
