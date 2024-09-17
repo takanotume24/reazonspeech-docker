@@ -46,4 +46,4 @@ RUN python3 -m venv .venv && \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["/bin/bash", "-c", "source /usr/local/reazonspeech/ReazonSpeech/.venv/bin/activate && exec bash"]
+ENTRYPOINT ["/bin/bash", "-c", "source /usr/local/reazonspeech/.venv/bin/activate && exec bash"]

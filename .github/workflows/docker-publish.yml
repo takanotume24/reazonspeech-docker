@@ -57,4 +57,5 @@ jobs:
 
       - name: Run tests in Docker container
         run: |
-          docker run --rm ghcr.io/${{ github.repository }}:latest /bin/bash -c "reazonspeech-nemo-asr --help"
+          wget https://research.reazon.jp/_downloads/a8f2c35bb3d351a76212b2257d5bfc85/speech-001.wav
+          docker run --rm ghcr.io/${{ github.repository }}:latest /bin/bash -c "reazonspeech-nemo-asr speech-001.wav"
