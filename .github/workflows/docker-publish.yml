@@ -38,7 +38,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: |
             ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{env.REAZONSPEECH_VERSION}}
+            ghcr.io/${{ github.repository }}:2.1.0
           build-args: |
-            REAZONSPEECH_VERSION=${{env.REAZONSPEECH_VERSION}}
+            REAZONSPEECH_VERSION=2.1.0
           push: true
