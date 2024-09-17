@@ -38,12 +38,8 @@ WORKDIR /usr/local/reazonspeech/ReazonSpeech
 RUN git checkout "tags/v${REAZONSPEECH_VERSION}"
 
 WORKDIR /usr/local/reazonspeech
-RUN python3 -m venv .venv && \
-    . .venv/bin/activate && \
-    pip install --upgrade --no-cache-dir pip setuptools wheel && \
+RUN pip install --upgrade --no-cache-dir pip setuptools wheel && \
     pip install --no-cache-dir Cython && \
     pip install --no-cache-dir ReazonSpeech/pkg/nemo-asr "huggingface-hub==0.23.0" "numpy<2.0.0"
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-ENTRYPOINT ["/bin/bash", "-c", "source /usr/local/reazonspeech/.venv/bin/activate && exec bash"]
