@@ -19,13 +19,6 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Read version from file
         id: read_version
         run: |
@@ -57,5 +50,5 @@ jobs:
 
       - name: Run tests in Docker container
         run: |
-          wget https://research.reazon.jp/_downloads/a8f2c35bb3d351a76212b2257d5bfc85/speech-001.wav
+          wget https://research.reazon.jp/_downloads/a8f2c35bb3d351a76212b2257d5bfc85/speech-001.wav && \
           docker run --rm ghcr.io/${{ github.repository }}:latest /bin/bash -c "reazonspeech-nemo-asr speech-001.wav"
