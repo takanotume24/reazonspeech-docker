@@ -23,6 +23,15 @@ jobs:
         id: read_version
         run: |
           echo "REAZONSPEECH_VERSION=$(cat reazonspeech_version)" >> "$GITHUB_ENV"
+    
+      - name: Test environment variable reading
+        run: |
+          if [ "${{env.REAZONSPEECH_VERSION}}" != "$REAZONSPEECH_VERSION" ]; then
+            echo "Error: Environment variable REAZONSPEECH_VERSION is not consistent" >&2
+            exit 1
+          else
+            echo "Environment variable REAZONSPEECH_VERSION is consistent"
+          fi
 
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
