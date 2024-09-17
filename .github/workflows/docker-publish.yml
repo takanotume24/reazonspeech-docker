@@ -40,7 +40,7 @@ jobs:
           haskell: true
           large-packages: true
           docker-images: true
-          swap-storage: true
+          swap-storage: false
         
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
