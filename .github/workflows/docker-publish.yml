@@ -50,5 +50,11 @@ jobs:
 
       - name: Run tests in Docker container
         run: |
-          wget https://research.reazon.jp/_downloads/a8f2c35bb3d351a76212b2257d5bfc85/speech-001.wav && \
-          docker run --rm ghcr.io/${{ github.repository }}:latest /bin/bash -c "reazonspeech-nemo-asr speech-001.wav"
+          # Create a directory to store the downloaded file
+          mkdir -p /tmp/test
+          
+          # Download the file into the created directory
+          wget -O /tmp/test/speech-001.wav https://research.reazon.jp/_downloads/a8f2c35bb3d351a76212b2257d5bfc85/speech-001.wav
+          
+          # Run the Docker container with the bind mount
+          docker run --rm -v /tmp/test:/data ghcr.io/${{ github.repository }}:latest reazonspeech-nemo-asr /data/speech-001.wav
