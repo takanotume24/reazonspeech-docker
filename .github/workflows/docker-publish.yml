@@ -29,8 +29,8 @@ jobs:
       - name: Read version from file
         id: read_version
         run: |
-          VERSION=$(cat reazonspeech_version)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          REAZONSPEECH_VERSION=$(cat reazonspeech_version)
+          echo "REAZONSPEECH_VERSION=$REAZONSPEECH_VERSION" >> $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
@@ -39,5 +39,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: |
             ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ env.VERSION }}
+            ghcr.io/${{ github.repository }}:${{ env.REAZONSPEECH_VERSION }}
+          build-args: |
+            REAZONSPEECH_VERSION:${{ env.REAZONSPEECH_VERSION }}
           push: true
