@@ -41,6 +41,7 @@ jobs:
           build-args: |
             REAZONSPEECH_VERSION=2.1.0
           load: true
+          no-cache: true
           push: false
 
       - name: Run tests in Docker container
