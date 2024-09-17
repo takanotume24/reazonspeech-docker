@@ -19,5 +19,4 @@ docker buildx build \
     -f "${repository_root}/Dockerfile" \
     -t "${docker_image_name}:${docker_image_version}" \
     --load \
-    --no-cache \
     .
