@@ -57,7 +57,7 @@ jobs:
           no-cache: true
           push: false
 
-      - name: Test running i Docker container
+      - name: Test running Docker container
         run: |
           # Create a directory to store the downloaded file
           mkdir -p /tmp/test
