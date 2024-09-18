@@ -1,4 +1,4 @@
-name: Build and Publish Docker Image to GHCR
+name: Build and Test Docker Image to GHCR
 
 on:
   push:
@@ -44,7 +44,7 @@ jobs:
           docker-images: true
           swap-storage: false
         
-      - name: Build and push Docker image
+      - name: Build Docker image
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -57,7 +57,7 @@ jobs:
           no-cache: true
           push: false
 
-      - name: Run tests in Docker container
+      - name: Test running i Docker container
         run: |
           # Create a directory to store the downloaded file
           mkdir -p /tmp/test
