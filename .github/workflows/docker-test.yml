@@ -1,4 +1,4 @@
-name: Build and Test Docker Image to GHCR
+name: Build and Test Docker Image
 
 on:
   push:
